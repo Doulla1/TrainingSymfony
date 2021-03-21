@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cours index{% endblock %}
+
+{% block body %}
+    <h1>Cours index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Semestre</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cour in cours %}
+            <tr>
+                <td><a href="{{ path('cours_show', {'id': cour.id}) }}">{{ cour.Nom }}</a></td>
+                <td>{{ cour.Semestre }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cours_new') }}">Create new</a>
+{% endblock %}
