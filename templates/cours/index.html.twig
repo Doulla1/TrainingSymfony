@@ -16,7 +16,7 @@
         {% for cour in cours %}
             <tr>
                 <td><a href="{{ path('cours_show', {'id': cour.id}) }}">{{ cour.Nom }}</a></td>
-                <td>{{ cour.Semestre }}</td>
+                <td>{{ cour.semestre_id }}</td>
             </tr>
         {% else %}
             <tr>
