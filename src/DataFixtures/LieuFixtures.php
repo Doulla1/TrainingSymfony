@@ -12,12 +12,12 @@ class LieuFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker= Factory::create("fr_FR");
-        for($i=1;i<11;i++){
+        for($i=1;$i<11;$i++){
             $lieu= new Lieu();
-            $lieu->
+            $lieu->setNom($faker->country);
+            $lieu->setDescription($faker->paragraph);
+            $manager->persist($lieu);
         }
-        // $product = new Product();
-        // $manager->persist($product);
 
         $manager->flush();
     }
