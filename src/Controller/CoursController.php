@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Cours;
 use App\Form\CoursType;
 use App\Repository\CoursRepository;
+use App\Repository\SemestreRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,5 +91,15 @@ class CoursController extends AbstractController
         }
 
         return $this->redirectToRoute('cours_index');
+    }
+
+    /**
+     * @Route("bysemestre", name="CByS", methods={"GET"})
+     */
+    public function showSemestres(SemestreRepository $repo): Response
+    {
+        return $this->render("cours/showSemestres.html.twig",[
+            "semestres"=>$repo->findAll()
+        ]);
     }
 }

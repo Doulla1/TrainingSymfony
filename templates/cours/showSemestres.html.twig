@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cours par Semestres {% endblock %}
+
+{% block body %}
+    {% for semestre in semestres %}
+        <h2>{{ semestre.semestre }}</h2>
+        <h3>{{ semestre.formation }}</h3>
+        <ol>
+            {% for cour in semestre.cours %}
+                <li>{{ cour.nom }}</li>
+            {% endfor %}
+        </ol>
+    {% endfor %}
+
+
+{% endblock %}

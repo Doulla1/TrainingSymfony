@@ -17,10 +17,6 @@ class Cours
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Semestre;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -37,20 +33,30 @@ class Cours
      */
     private $ECTS;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Semestre::class, inversedBy="cours")
+     */
+    private $semestre;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Enseignant::class, inversedBy="cours")
+     */
+    private $enseignant;
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getSemestre(): ?string
+    public function getSemestre(): ?Semestre
     {
-        return $this->Semestre;
+        return $this->semestre;
     }
 
-    public function setSemestre(string $Semestre): self
+    public function setSemestre(?Semestre $Semestre): self
     {
-        $this->Semestre = $Semestre;
+        $this->semestre = $Semestre;
 
         return $this;
     }
@@ -87,6 +93,18 @@ class Cours
     public function setECTS(?int $ECTS): self
     {
         $this->ECTS = $ECTS;
+
+        return $this;
+    }
+
+    public function getEnseignant(): ?Enseignant
+    {
+        return $this->enseignant;
+    }
+
+    public function setEnseignant(?Enseignant $enseignant): self
+    {
+        $this->enseignant = $enseignant;
 
         return $this;
     }
